@@ -7,17 +7,15 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="flex-box-froggy">
-        <h1>Froggy Flexbox</h1>
-        <div>
-          <label for="flexbox-stage">Pick a stage to display</label>
-          <select name="flexbox-stage" id="flexbox-stage" onchange="updateImg()"></select>
-          </select>
-        </div>
-        <div id="flexbox-stage-img"></div>
-      </div>
+    <div>
+      <button class="flexBoxFroggy" onclick="challengeForFlexBox()">
+        Froggy Flexbox
+      </button>
+      <button class="gridGraden" onclick="challengeForGrid()">
+        Grid Graden
+      </button>
     </div>
+    <div class="container" id="container"></div>
     <script src="js/script.js"></script>
   </body>
 </html>
