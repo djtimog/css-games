@@ -1,0 +1,27 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+.container {
+  margin: 150px auto;
+  background-color: #25442621;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+}
+h1{
+  color: green;
+  font-size: 40px;
+}
+img{
+  max-width: 700px;
+  margin: 20px;
+  border-radius: 20px;
+}
+label{
+  font-size: 30px;
+}
+select{
+  height: 30px;
+  border-radius: 5px;
+}

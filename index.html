@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Css game</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-    <div class="flex-box-froggy">
-        <h1>froggy flexbox</h1>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="flex-box-froggy">
+        <h1>Froggy Flexbox</h1>
         <div>
-            <label for="flexbox-stage">pick a stage to display</label>
-            <select name="flexbox-stage" id="flexbox-stage">
-                <option value="1" data-stage="1">level 1</option>
-            </select>
+          <label for="flexbox-stage">Pick a stage to display</label>
+          <select name="flexbox-stage" id="flexbox-stage" onchange="updateImg()"></select>
+          </select>
         </div>
-        <div class="flexbox-stage-img"></div>
+        <div id="flexbox-stage-img"></div>
+      </div>
     </div>
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>
