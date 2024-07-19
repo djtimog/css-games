@@ -22,7 +22,7 @@ const challengeForGrid = () => {
   document.getElementById('gardengrid').classList.add('btnnt');
   document.getElementById('container').classList.add('container2');
   defaultPage = false;
-  game = 'gridgraden';
+  game = 'gridgarden';
   page();
 }
 
