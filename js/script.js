@@ -1,6 +1,6 @@
 let pageDiv = document.getElementById("container");
-let defaultPage = splitCookies(0) || "true";
-let game = splitCookies(1) || "flexbox";
+let defaultPage = splitCookies(0) === undefined ? "true" : splitCookies(0);
+let game = splitCookies(1) === undefined ? "flexbox" : splitCookies(1);
 
 function splitCookies(i) {
   const cookieString = document.cookie;
