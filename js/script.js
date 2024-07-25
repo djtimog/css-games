@@ -1,7 +1,18 @@
 let pageDiv = document.getElementById("container");
-let defaultPage = splitCookies(0) === undefined ? "true" : splitCookies(0);
-let game = splitCookies(1) === undefined ? "flexbox" : splitCookies(1);
+let defaultPage = splitCookies(0);
+let game = splitCookies(1);
 
+const cookiesCheck = (cookies, i) => {
+  if (cookies == []) {
+    returnCookie = [
+      ["defaultPage", "true"],
+      ["game", "flexbox"],
+    ];
+  } else {
+    returnCookie = cookies;
+  }
+  return returnCookie[i][1];
+};
 function splitCookies(i) {
   const cookieString = document.cookie;
   const cookieSegments = cookieString.split(";");
@@ -11,8 +22,7 @@ function splitCookies(i) {
     const value = segment.trim().split("=");
     cookies.push(value);
   }
-
-  return cookies[i][1];
+  return cookiesCheck(cookies, i);
 }
 
 const updateImg = () => {
