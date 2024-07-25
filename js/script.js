@@ -1,6 +1,19 @@
 let pageDiv = document.getElementById("container");
-let defaultPage = true;
-let game = 'flexbox';
+let defaultPage = splitCookies(0) || "true";
+let game = splitCookies(1) || "flexbox";
+
+function splitCookies(i) {
+  const cookieString = document.cookie;
+  const cookieSegments = cookieString.split(";");
+
+  const cookies = [];
+  for (const segment of cookieSegments) {
+    const value = segment.trim().split("=");
+    cookies.push(value);
+  }
+
+  return cookies[i][1];
+}
 
 const updateImg = () => {
   let flexBoxStage = document.getElementById("flexbox-stage");
@@ -9,22 +22,20 @@ const updateImg = () => {
 };
 
 const challengeForFlexBox = () => {
-  document.getElementById('froggyflex').classList.add('btnnt');
-  document.getElementById('gardengrid').classList.remove('btnnt');
-  document.getElementById('container').classList.remove('container2');
-  defaultPage = true;
-  game = 'flexbox';
-  page();
-}
+  document.cookie = "defaultPage=true";
+  document.cookie = "game=flexbox";
+  defaultPage = splitCookies(0);
+  game = splitCookies(1);
+  page(defaultPage);
+};
 
 const challengeForGrid = () => {
-  document.getElementById('froggyflex').classList.remove('btnnt');
-  document.getElementById('gardengrid').classList.add('btnnt');
-  document.getElementById('container').classList.add('container2');
-  defaultPage = false;
-  game = 'gridgarden';
-  page();
-}
+  document.cookie = "defaultPage=false";
+  document.cookie = "game=gridgarden";
+  defaultPage = splitCookies(0);
+  game = splitCookies(1);
+  page(defaultPage);
+};
 
 const imageLevel = (levels) => {
   let flexBoxStage = document.getElementById("flexbox-stage");
@@ -34,8 +45,11 @@ const imageLevel = (levels) => {
   updateImg();
 };
 
-const page = () => {
-  if (defaultPage == true) {
+const page = (defaultPage) => {
+  if (defaultPage == "true") {
+    document.getElementById("froggyflex").classList.add("btnnt");
+    document.getElementById("gardengrid").classList.remove("btnnt");
+    document.getElementById("container").classList.remove("container2");
     const levels = [
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
       22, 23, 24,
@@ -59,9 +73,12 @@ const page = () => {
 
     imageLevel(levels);
   } else {
+    document.getElementById("froggyflex").classList.remove("btnnt");
+    document.getElementById("gardengrid").classList.add("btnnt");
+    document.getElementById("container").classList.add("container2");
     const levels = [
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-      22, 23, 24, 25, 26, 27, 28
+      22, 23, 24, 25, 26, 27, 28,
     ];
     pageDiv.innerHTML = `<div class="flex-box-froggy">
           <h1>Grid Garden</h1>
@@ -72,13 +89,13 @@ const page = () => {
       </div>
     <div id="flexbox-stage-img"></div>
   </div>`;
-  document.getElementById(
-    "flexbox-stage"
-  ).innerHTML = `<option value="Completed">Level Completed</option>`;
+    document.getElementById(
+      "flexbox-stage"
+    ).innerHTML = `<option value="Completed">Level Completed</option>`;
 
-  // calling the function image level function
+    // calling the function image level function
 
-  imageLevel(levels);
+    imageLevel(levels);
   }
 };
-page();
+page(defaultPage);
