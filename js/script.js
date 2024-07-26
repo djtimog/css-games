@@ -1,18 +1,15 @@
 let pageDiv = document.getElementById("container");
 
 const cookiesCheck = (cookies, i) => {
-  let returnCookie;
-  if (cookies.length === 0) {
-    returnCookie = [
-      ["defaultPage", "true"],
-      ["game", "flexbox"],
-    ];  
+  let returnCookie = [];
+  if (cookies.length === 1) {
+    returnCookie.push(["defaultPage", "true"]);
+    returnCookie.push(["game", "flexbox"]);
   } else {
     returnCookie = cookies;
   }
-  let returnCookieOfEach = returnCookie[i];
-  return returnCookieOfEach[1];
-}
+  return returnCookie[i][1];
+};
 
 function splitCookies(i) {
   const cookieString = document.cookie;
@@ -27,8 +24,8 @@ function splitCookies(i) {
   return cookiesCheck(cookies, i);
 }
 
-let defaultPage = splitCookies(0);
-let game = splitCookies(1);
+let defaultPage = splitCookies(0, 1);
+let game = splitCookies(1, 1);
 
 const updateImg = () => {
   let flexBoxStage = document.getElementById("flexbox-stage");
