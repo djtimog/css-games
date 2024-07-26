@@ -1,30 +1,34 @@
 let pageDiv = document.getElementById("container");
-let defaultPage = splitCookies(0);
-let game = splitCookies(1);
+
+const cookiesCheck = (cookies, i) => {
+  let returnCookie;
+  if (cookies.length === 0) {
+    returnCookie = [
+      ["defaultPage", "true"],
+      ["game", "flexbox"],
+    ];  
+  } else {
+    returnCookie = cookies;
+  }
+  let returnCookieOfEach = returnCookie[i];
+  return returnCookieOfEach[1];
+}
 
 function splitCookies(i) {
   const cookieString = document.cookie;
   const cookieSegments = cookieString.split(";");
 
-  const cookies = [];
+  let cookies = [];
   for (const segment of cookieSegments) {
     const value = segment.trim().split("=");
     cookies.push(value);
   }
-
-  const cookiesCheck = (cookies, i) => {
-    if (cookies == []) {
-      returnCookie = [
-        ["defaultPage", "true"],
-        ["game", "flexbox"],
-      ];
-    } else {
-      returnCookie = cookies;
-    }
-    return returnCookie[i][1];
-  }
+  console.log(cookiesCheck(cookies, i));
   return cookiesCheck(cookies, i);
 }
+
+let defaultPage = splitCookies(0);
+let game = splitCookies(1);
 
 const updateImg = () => {
   let flexBoxStage = document.getElementById("flexbox-stage");
